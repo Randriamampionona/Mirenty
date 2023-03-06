@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	*,
+	*::after,
+	*::before {
+		@apply m-0 p-0 box-border;
+	}
+
+	button {
+		@apply border-0 outline-none disabled:cursor-not-allowed disabled:opacity-50 select-none;
+	}
+
+	input,
+	textarea,
+	select {
+		@apply w-full h-full bg-transparent outline-none border-none;
+	}
+}
