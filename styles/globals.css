@@ -19,3 +19,9 @@
 		@apply w-full h-full bg-transparent outline-none border-none;
 	}
 }
+
+@layer components {
+	.primaryBtn {
+		@apply flex items-center justify-center gap-x-2 bg-primaryColor text-white px-4 h-11 rounded hover:bg-primaryColor/95 disabled:cursor-not-allowed disabled:opacity-50 select-none;
+	}
+}
