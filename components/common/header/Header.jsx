@@ -5,19 +5,35 @@ import Link from "next/link";
 import { FaPhone } from "react-icons/fa";
 import { RiMenu3Line } from "react-icons/ri";
 import { useRouter } from "next/router";
-import { GlobalContext } from "../../../store/contexts/GlobalContext";
+import { useEffect, useState } from "react";
 
 const Header = ({ navLinks }) => {
-	const { headerStyle } = GlobalContext();
+	const [headerStyle, setHeaderStyle] = useState("transparent");
 	const { pathname, push } = useRouter();
+
+	// listen for scroll
+	useEffect(() => {
+		const handleScroll = () => {
+			window.scrollY > 129
+				? setHeaderStyle("normal")
+				: setHeaderStyle("transparent");
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
 
 	return (
 		<header
-			className={`z-50 fixed left-0 flex items-center justify-between w-full h-16 px-4  md:px-6 lg:px-14 transition-all duration-75 ease-in-out ${
+			className={`z-50 fixed left-0 flex items-center justify-between w-full h-16 px-4  md:px-6 lg:px-14 transition-all duration-100 ease-in-out ${
 				headerStyle === "transparent"
-					? "bg-transparent text-white"
-					: "bg-white text-gray-900 border-b border-[#787ed70a] shadow shadow-gray-900"
+					? "bg-transparent"
+					: "bg-white border-b border-[#787ed70a] shadow shadow-gray-900"
 			}`}>
+			{/* logo */}
 			<figure className="relative w-24 h-full md:w-28">
 				<Image
 					src={
@@ -32,13 +48,18 @@ const Header = ({ navLinks }) => {
 				/>
 			</figure>
 
+			{/* nav */}
 			<nav className="flex items-center justify-end gap-x-12">
 				{/* nav links */}
 				<ul className="items-center gap-x-10 hidden md:flex">
 					{navLinks.map((link) => (
 						<li
 							key={link.slug}
-							className={`text-center font-medium text-white hover:text-primaryColor/75 ${
+							className={`text-center font-medium hover:text-primaryColor/75 ${
+								headerStyle === "transparent"
+									? "text-white"
+									: "text-gray-900"
+							} ${
 								pathname === link.key &&
 								"text-primaryColor/75 hover:text-primaryColor"
 							}`}>
@@ -58,7 +79,12 @@ const Header = ({ navLinks }) => {
 				</button>
 
 				{/* burger btn */}
-				<button className="bg-transparent cursor-pointer text-white text-2xl md:hidden">
+				<button
+					className={`bg-transparent cursor-pointer text-white text-2xl md:hidden ${
+						headerStyle === "transparent"
+							? "text-white"
+							: "text-gray-900"
+					}`}>
 					<span>
 						<RiMenu3Line />
 					</span>
