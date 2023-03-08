@@ -8,6 +8,8 @@ import { Autoplay } from "swiper";
 import "swiper/css";
 import S1 from "../public/assets/Sary/mirenty.com_mirenty (38).jpg";
 import S2 from "../public/assets/Sary/mirenty.com_mirenty (37).jpg";
+import NewsEvents from "../public/assets/Sary/mirenty.com_mirenty (32).jpg";
+import NewsEventsImg from "../public/assets/Sary/mirenty.com_mirenty (38).jpg";
 
 const HomePage = () => {
 	return (
@@ -15,6 +17,7 @@ const HomePage = () => {
 			<MetaHead />
 			<IntroSection />
 			<CoupleSection />
+			<NewsEventsSection />
 		</Fragment>
 	);
 };
@@ -114,6 +117,58 @@ const CoupleSection = () => {
 					</SwiperSlide>
 				))}
 			</Swiper>
+		</section>
+	);
+};
+
+const NewsEventsSection = () => {
+	return (
+		<section className="w-full py-20">
+			<SectionTitle
+				title={"News & Events"}
+				desc={
+					"Chez MIRENTY, nous savons que votre mariage est une journée très importante et spéciale, c'est pourquoi nous nous engageons à faire en sorte que tout soit parfait."
+				}
+			/>
+
+			<div className="relative w-full h-[35rem]">
+				<Image
+					src={NewsEvents}
+					alt="news & events"
+					layout="fill"
+					objectFit="cover"
+				/>
+
+				<div className="z-10 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex w-[90%] p-6 bg-white md:right-0 md:bottom-12 md:w-[64%] lg:w-[42%]">
+					<div className="w-[70%]">
+						<h1 className="text-xl md:text-2xl mb-6">
+							Lorem ipsum dolor sit.
+						</h1>
+						<p>
+							Notre équipe de planners professionnels est là pour
+							vous aider à créer l&apos;ambiance parfaite pour
+							votre mariage, en prenant en compte tous les aspects
+							qui vous tiennent à cœur. Nous sommes là pour vous
+							aider à affirmer votre image et à créer un événement
+							qui vous ressemble, tout en prenant en compte les
+							besoins de vos convives.
+						</p>
+
+						<button className="primaryBtn mt-12">
+							<span>More News</span>
+						</button>
+					</div>
+
+					<div className="flex-grow flex items-center justify-center font-medium">
+						<Image
+							src={NewsEventsImg}
+							alt=""
+							width={"150px"}
+							height={"150px"}
+						/>
+					</div>
+				</div>
+			</div>
 		</section>
 	);
 };

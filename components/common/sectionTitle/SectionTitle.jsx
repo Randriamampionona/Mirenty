@@ -11,7 +11,7 @@ const SectionTitle = ({ title, desc }) => {
 			</div>
 
 			{desc && (
-				<p className="text-center max-w-md my-6 text-gray-700">
+				<p className="text-center max-w-md mx-auto my-6 text-gray-700">
 					{desc}
 				</p>
 			)}
