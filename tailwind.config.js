@@ -6,6 +6,10 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				satisfy: ["Satisfy", "cursive"],
+			},
+
 			colors: {
 				primaryColor: "#bb2649",
 				// secondaryColor: "#fe9ab2",
