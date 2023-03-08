@@ -10,14 +10,18 @@ const SectionTitle = ({ title, desc }) => {
 				<div className="mt-[7px] mx-auto w-14 h-[3px] bg-primaryColor" />
 			</div>
 
-			<p className="text-center max-w-md my-6 text-gray-700">{desc}</p>
+			{desc && (
+				<p className="text-center max-w-md my-6 text-gray-700">
+					{desc}
+				</p>
+			)}
 		</div>
 	);
 };
 
 SectionTitle.defaultProps = {
 	title: "Title here",
-	desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis optio cumque beatae ipsa voluptate! Exercitationem, soluta nobis aliquid eligendi ullam laboriosam illum praesentium blanditiis suscipit, error impedit aut qui laborum!",
+	desc: null,
 };
 
 export default SectionTitle;
