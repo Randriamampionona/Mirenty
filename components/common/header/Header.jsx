@@ -102,14 +102,14 @@ Header.defaultProps = {
 			text: "Home",
 		},
 		{
-			slug: "/story",
-			key: "/story",
-			text: "Story",
-		},
-		{
 			slug: "/about",
 			key: "/about",
 			text: "About us",
+		},
+		{
+			slug: "/blog",
+			key: "/blog",
+			text: "Blog",
 		},
 		{
 			slug: "/gallery",
