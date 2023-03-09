@@ -131,16 +131,15 @@ const NewsEventsSection = () => {
 				}
 			/>
 
-			<div className="relative w-full h-[35rem]">
+			<div className="relative w-full py-8 h-auto md:h-[35rem] md:py-0">
 				<Image
 					src={NewsEvents}
 					alt="news & events"
 					layout="fill"
 					objectFit="cover"
 				/>
-
-				<div className="z-10 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex w-[90%] p-6 bg-white md:right-0 md:bottom-12 md:w-[64%] lg:w-[42%]">
-					<div className="w-[70%]">
+				<div className="z-10 relative -bottom-28 shadow-newsEventsShadow bg-white !m-4 p-4 flex items-center justify-center flex-col-reverse gap-y-12 md:absolute md:!m-0 md:right-0 md:bottom-8 md:flex-row md:shadow-none md:w-[64%] lg:w-[42%]">
+					<div className="w-full text-center md:text-left md:w-[70%]">
 						<h1 className="text-xl md:text-2xl mb-6">
 							Lorem ipsum dolor sit.
 						</h1>
@@ -154,7 +153,7 @@ const NewsEventsSection = () => {
 							besoins de vos convives.
 						</p>
 
-						<button className="primaryBtn mt-12">
+						<button className="primaryBtn mt-12 mx-auto md:mx-0 w-full md:w-auto">
 							<span>More News</span>
 						</button>
 					</div>

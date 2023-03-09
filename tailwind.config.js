@@ -14,6 +14,10 @@ module.exports = {
 				primaryColor: "#bb2649",
 				// secondaryColor: "#fe9ab2",
 			},
+
+			boxShadow: {
+				newsEventsShadow: "0px 8px 23px -8px",
+			},
 		},
 	},
 	plugins: [],
