@@ -3,12 +3,11 @@ import { Fragment } from "react";
 import { MetaHead, SectionTitle } from "./../components";
 import IntroImg from "../public/assets/Sary/mirenty.com_mirenty (2).jpg";
 import { FaFacebook, FaInstagram, FaMouse, FaTwitter } from "react-icons/fa";
-import { FiMail, FiMessageSquare, FiUser } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
+import { Pagination, EffectCoverflow } from "swiper";
 import "swiper/css";
-import S1 from "../public/assets/Sary/mirenty.com_mirenty (38).jpg";
-import S2 from "../public/assets/Sary/mirenty.com_mirenty (37).jpg";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 import NewsEvents from "../public/assets/Sary/mirenty.com_mirenty (32).jpg";
 import NewsEventsImg from "../public/assets/Sary/mirenty.com_mirenty (38).jpg";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
@@ -25,7 +24,6 @@ import * as yup from "yup";
 import aboutImg1 from "../public/assets/Sary/mirenty.com_mirenty (1).jpg";
 import aboutImg2 from "../public/assets/Sary/mirenty.com_mirenty (5).jpg";
 import aboutImg3 from "../public/assets/Sary/mirenty.com_mirenty (12).jpg";
-import aboutImg4 from "../public/assets/Sary/mirenty.com_mirenty (35).jpg";
 
 const HomePage = () => {
 	return (
@@ -48,6 +46,7 @@ const IntroSection = () => {
 				alt="intro"
 				layout="fill"
 				objectFit="cover"
+				priority={true}
 				className="brightness-50 pointer-events-none"
 			/>
 			<div className="flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
@@ -80,42 +79,56 @@ const IntroSection = () => {
 };
 
 const AboutSection = () => {
-	const slideData = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
+	const slideData = [aboutImg1, aboutImg2, aboutImg3];
+
 	return (
 		<section className="w-full py-20 bg-sectionBgColor">
-			<div className="flex items-center justify-center gap-x-10 max-w-[90%] w-full mx-auto md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
-				<div className="relative w-[30%]">
+			<div className="flex flex-col items-center justify-center gap-x-10 max-w-[90%] w-full mx-auto md:flex-row md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+				<div className="flex-1">
 					{/* swiper */}
 					<Swiper
-						slidesPerView={1}
-						modules={[Autoplay]}
-						spaceBetween={0}
-						// pagination={{ clickable: true }}
+						effect="coverflow"
+						grabCursor={true}
+						centeredSlides={true}
 						loop={true}
-						draggable={true}
-						autoplay={{
-							delay: 4000,
-							disableOnInteraction: false,
-						}}>
+						slidesPerView={"auto"}
+						coverflowEffect={{
+							rotate: 0,
+							stretch: 0,
+							depth: 100,
+							modifier: 2.5,
+						}}
+						modules={[Pagination, EffectCoverflow]}
+						pagination={{
+							el: ".swiper_pagination",
+							clickable: true,
+						}}
+						className="relative h-auto !p-8">
 						{slideData?.map((s) => (
-							<SwiperSlide key={s} className="w-auto h-auto">
-								<figure className="relative w-72 h-96 p-2 bg-white border border-gray-900/40">
-									<Image
-										src={s}
-										alt={s}
-										objectFit="cover"
-										layout="fill"
-									/>
-								</figure>
+							<SwiperSlide
+								key={s}
+								className="flex !rounded-lg !shadow-aboutUsShadow !overflow-hidden">
+								<Image
+									src={s}
+									alt={s}
+									objectFit="cover"
+									placeholder="blur"
+									blurDataURL={s}
+									loading="lazy"
+									className="w-72 h-96"
+								/>
 							</SwiperSlide>
 						))}
+
+						{/* pagination */}
+						<div className="!flex !items-center !justify-center swiper_pagination mt-6" />
 					</Swiper>
 				</div>
 
-				<div className="flex-grow">
+				<div className="flex-1">
 					<div className="w-full mb-4">
 						<div>
-							<h1 className="text-xl md:text-2xl font-medium uppercase">
+							<h1 className="text-xl md:text-2xl font-greateVibes font-medium uppercase">
 								About Us
 							</h1>
 							<div className="mt-[7px] w-14 h-[3px] bg-primaryColor" />

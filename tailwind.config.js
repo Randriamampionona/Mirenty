@@ -7,16 +7,16 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				satisfy: ["Satisfy", "cursive"],
+				greateVibes: ["Greate Vibes", "cursive"],
 			},
 
 			colors: {
 				primaryColor: "#bb2649",
-				// secondaryColor: "#fe9ab2",
 				sectionBgColor: "#f5f5dc",
 			},
 
 			boxShadow: {
+				aboutUsShadow: "0px 0px 10px 0px #111827",
 				newsEventsShadow: "0px 8px 23px -8px",
 			},
 		},
