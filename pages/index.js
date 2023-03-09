@@ -33,7 +33,6 @@ const HomePage = () => {
 			<MetaHead />
 			<IntroSection />
 			<AboutSection />
-			{/* <CoupleSection /> */}
 			<NewsEventsSection />
 			<GallerySection />
 			<ContactForm />
@@ -145,66 +144,6 @@ const AboutSection = () => {
 					</button>
 				</div>
 			</div>
-		</section>
-	);
-};
-
-const CoupleSection = () => {
-	const slideData = [
-		{
-			id: 1,
-			date: new Date().toISOString(),
-			mr: {
-				profile: S1,
-				name: "John Doe",
-				age: 28,
-			},
-			mrs: {
-				profile: S2,
-				name: "Marie",
-				age: 25,
-			},
-		},
-	];
-
-	return (
-		<section className="w-full py-20">
-			<SectionTitle title={"Lovely Couple"} />
-
-			{/* swiper */}
-			<Swiper
-				slidesPerView={1}
-				modules={[Autoplay]}
-				pagination={{ clickable: true }}
-				loop={true}
-				autoplay={{
-					delay: 4000,
-					disableOnInteraction: false,
-				}}>
-				{[...slideData, ...slideData, ...slideData]?.map((s) => (
-					<SwiperSlide key={s.id}>
-						<div className="flex items-center justify-center gap-x-12 w-full mx-auto">
-							<figure className="relative rounded-lg w-56 h-60 overflow-hidden">
-								<Image
-									src={s.mr.profile}
-									alt={s.mr.name}
-									objectFit="cover"
-									layout="fill"
-								/>
-							</figure>
-
-							<figure className="relative rounded-md w-56 h-60 overflow-hidden">
-								<Image
-									src={s.mrs.profile}
-									alt={s.mrs.name}
-									objectFit="cover"
-									layout="fill"
-								/>
-							</figure>
-						</div>
-					</SwiperSlide>
-				))}
-			</Swiper>
 		</section>
 	);
 };
