@@ -31,7 +31,7 @@ const Header = ({ navLinks }) => {
 			className={`z-50 fixed left-0 flex items-center justify-between w-full h-16 px-4  md:px-6 lg:px-14 transition-all duration-100 ease-in-out ${
 				headerStyle === "transparent"
 					? "bg-transparent"
-					: "bg-white border-b border-[#787ed70a] shadow shadow-gray-900"
+					: "bg-white border-b border-[#787ed70a] shadow shadow-gray-900/25"
 			}`}>
 			{/* logo */}
 			<figure className="relative w-24 h-full md:w-28">
