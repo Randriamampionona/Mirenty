@@ -19,6 +19,8 @@ import g5 from "../public/assets/Sary/mirenty.com_mirenty (16).jpg";
 import g6 from "../public/assets/Sary/mirenty.com_mirenty (22).jpg";
 import g7 from "../public/assets/Sary/mirenty.com_mirenty (23).jpg";
 import g8 from "../public/assets/Sary/mirenty.com_mirenty (24).jpg";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const HomePage = () => {
 	return (
@@ -28,6 +30,7 @@ const HomePage = () => {
 			<CoupleSection />
 			<NewsEventsSection />
 			<GallerySection />
+			<ContactForm />
 		</Fragment>
 	);
 };
@@ -209,6 +212,101 @@ const GallerySection = () => {
 				</button>
 			</div>
 		</section>
+	);
+};
+
+const ContactForm = () => {
+	return (
+		<div className="max-w-md mx-auto">
+			<SectionTitle title={"Contact Us"} />
+
+			<div className="mx-auto w-64">
+				<Formik
+					initialValues={{ name: "", email: "", message: "" }}
+					validationSchema={Yup.object({
+						name: Yup.string().required("Name is required"),
+						email: Yup.string()
+							.email("Invalid email address")
+							.required("Email is required"),
+						message: Yup.string().required("Message is required"),
+					})}
+					onSubmit={(values, { setSubmitting }) => {
+						console.log(values);
+						setSubmitting(false);
+					}}>
+					{({ isSubmitting }) => (
+						<Form>
+							<div className="mb-4">
+								<label
+									htmlFor="name"
+									className="block text-gray-700 font-bold mb-2">
+									Name
+								</label>
+								<Field
+									type="text"
+									name="name"
+									id="name"
+									placeholder="Enter your name"
+									className="border border-gray-300 px-4 py-2 w-full rounded-md"
+								/>
+								<ErrorMessage
+									name="name"
+									component="p"
+									className="text-red-500 mt-2"
+								/>
+							</div>
+
+							<div className="mb-4">
+								<label
+									htmlFor="email"
+									className="block text-gray-700 font-bold mb-2">
+									Email
+								</label>
+								<Field
+									type="email"
+									name="email"
+									id="email"
+									placeholder="Enter your email address"
+									className="border border-gray-300 px-4 py-2 w-full rounded-md"
+								/>
+								<ErrorMessage
+									name="email"
+									component="p"
+									className="text-red-500 mt-2"
+								/>
+							</div>
+
+							<div className="mb-4">
+								<label
+									htmlFor="message"
+									className="block text-gray-700 font-bold mb-2">
+									Message
+								</label>
+								<Field
+									as="textarea"
+									name="message"
+									id="message"
+									placeholder="Enter your message"
+									className="border border-gray-300 px-4 py-2 w-full rounded-md"
+								/>
+								<ErrorMessage
+									name="message"
+									component="p"
+									className="text-red-500 mt-2"
+								/>
+							</div>
+
+							<button
+								type="submit"
+								disabled={isSubmitting}
+								className="primaryBtn">
+								<span>Submit</span>
+							</button>
+						</Form>
+					)}
+				</Formik>
+			</div>
+		</div>
 	);
 };
 
