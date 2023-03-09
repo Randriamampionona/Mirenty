@@ -4,7 +4,7 @@ import { MetaHead, SectionTitle } from "./../components";
 import IntroImg from "../public/assets/Sary/mirenty.com_mirenty (2).jpg";
 import { FaFacebook, FaInstagram, FaMouse, FaTwitter } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, EffectCoverflow } from "swiper";
+import { Pagination, EffectCoverflow, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
@@ -109,7 +109,10 @@ const AboutSection = () => {
 							depth: 100,
 							modifier: 2.5,
 						}}
-						modules={[Pagination, EffectCoverflow]}
+						modules={[Pagination, EffectCoverflow, Autoplay]}
+						autoplay={{
+							delay: 6000,
+						}}
 						pagination={{
 							el: ".swiper_pagination",
 							clickable: true,
