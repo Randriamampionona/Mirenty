@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { MetaHead, SectionTitle } from "./../components";
 import IntroImg from "../public/assets/Sary/mirenty.com_mirenty (2).jpg";
 import { FaFacebook, FaInstagram, FaMouse, FaTwitter } from "react-icons/fa";
+import { FiMail, FiMessageSquare, FiUser } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
@@ -19,8 +20,8 @@ import g5 from "../public/assets/Sary/mirenty.com_mirenty (16).jpg";
 import g6 from "../public/assets/Sary/mirenty.com_mirenty (22).jpg";
 import g7 from "../public/assets/Sary/mirenty.com_mirenty (23).jpg";
 import g8 from "../public/assets/Sary/mirenty.com_mirenty (24).jpg";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import aboutImg1 from "../public/assets/Sary/mirenty.com_mirenty (1).jpg";
 import aboutImg2 from "../public/assets/Sary/mirenty.com_mirenty (5).jpg";
 import aboutImg3 from "../public/assets/Sary/mirenty.com_mirenty (12).jpg";
@@ -291,97 +292,121 @@ const GallerySection = () => {
 
 const ContactForm = () => {
 	return (
-		<div className="max-w-md mx-auto">
+		<div className="w-full py-20 bg-sectionBgColor">
 			<SectionTitle title={"Contact Us"} />
 
-			<div className="mx-auto w-64">
-				<Formik
-					initialValues={{ name: "", email: "", message: "" }}
-					validationSchema={Yup.object({
-						name: Yup.string().required("Name is required"),
-						email: Yup.string()
-							.email("Invalid email address")
-							.required("Email is required"),
-						message: Yup.string().required("Message is required"),
-					})}
-					onSubmit={(values, { setSubmitting }) => {
-						console.log(values);
-						setSubmitting(false);
-					}}>
-					{({ isSubmitting }) => (
-						<Form>
-							<div className="mb-4">
-								<label
-									htmlFor="name"
-									className="block text-gray-700 font-bold mb-2">
-									Name
-								</label>
-								<Field
-									type="text"
-									name="name"
-									id="name"
-									placeholder="Enter your name"
-									className="border border-gray-300 px-4 py-2 w-full rounded-md"
-								/>
-								<ErrorMessage
-									name="name"
-									component="p"
-									className="text-red-500 mt-2"
-								/>
-							</div>
-
-							<div className="mb-4">
-								<label
-									htmlFor="email"
-									className="block text-gray-700 font-bold mb-2">
-									Email
-								</label>
-								<Field
-									type="email"
-									name="email"
-									id="email"
-									placeholder="Enter your email address"
-									className="border border-gray-300 px-4 py-2 w-full rounded-md"
-								/>
-								<ErrorMessage
-									name="email"
-									component="p"
-									className="text-red-500 mt-2"
-								/>
-							</div>
-
-							<div className="mb-4">
-								<label
-									htmlFor="message"
-									className="block text-gray-700 font-bold mb-2">
-									Message
-								</label>
-								<Field
-									as="textarea"
-									name="message"
-									id="message"
-									placeholder="Enter your message"
-									className="border border-gray-300 px-4 py-2 w-full rounded-md"
-								/>
-								<ErrorMessage
-									name="message"
-									component="p"
-									className="text-red-500 mt-2"
-								/>
-							</div>
-
-							<button
-								type="submit"
-								disabled={isSubmitting}
-								className="primaryBtn">
-								<span>Submit</span>
-							</button>
-						</Form>
-					)}
-				</Formik>
+			<div className="mx-auto w-96">
+				<FormInputs />
 			</div>
 		</div>
 	);
+};
+
+const FormInputs = () => {
+	const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+		useFormik({
+			initialValues: {
+				name: "",
+				email: "",
+				message: "",
+			},
+
+			validationSchema: yup.object().shape({
+				name: yup.string(),
+				email: yup
+					.string()
+					.email("Please enter a valid email")
+					.required("Please fill out this field"),
+				message: yup.string().required("Please fill out this field"),
+			}),
+
+			onSubmit: async (_v, a) => {
+				a.resetForm();
+			},
+		});
+
+	return (
+		<form
+			className="flex flex-col w-full"
+			autoComplete="off"
+			onSubmit={handleSubmit}>
+			{/* name */}
+			<div className="flex flex-col mb-3">
+				<div
+					className={`flex items-center justify-between px-3 h-11 rounded-sm bg-whiteColor border border-gray-300 focus-within:border focus-within:border-primaryColor ${
+						touched.name &&
+						errors.name &&
+						"!border-red-500 focus-within:!border-red-500 text-red-500"
+					}`}>
+					<input
+						type="text"
+						name="name"
+						placeholder="Name"
+						className="flex-grow w-full border-0 outline-0 px-2 h-full bg-transparent text-darkColor"
+						value={values.name}
+						onChange={handleChange}
+						onBlur={handleBlur}
+					/>
+				</div>
+				{touched.name && errors.name && <ErrorMsg msg={errors.name} />}
+			</div>
+
+			{/* email */}
+			<div className="flex flex-col mb-3">
+				<div
+					className={`flex items-center justify-between px-3 h-11 rounded-sm bg-whiteColor border border-gray-300 focus-within:border focus-within:border-primaryColor ${
+						touched.email &&
+						errors.email &&
+						"!border-red-500 focus-within:!border-red-500 text-red-500"
+					}`}>
+					<input
+						type="email"
+						name="email"
+						placeholder="Email address"
+						className="flex-grow w-full border-0 outline-0 px-2 h-full bg-transparent text-darkColor"
+						value={values.email}
+						onChange={handleChange}
+						onBlur={handleBlur}
+					/>
+				</div>
+				{touched.email && errors.email && (
+					<ErrorMsg msg={errors.email} />
+				)}
+			</div>
+
+			{/* message */}
+			<div className="flex flex-col mb-1">
+				<div
+					className={`flex items-center justify-between px-3 h-auto rounded-sm bg-whiteColor border border-gray-300 focus-within:border focus-within:border-primaryColor ${
+						touched.message &&
+						errors.message &&
+						"!border-red-500 focus-within:!border-red-500 text-red-500"
+					}`}>
+					<textarea
+						name="message"
+						placeholder="Your message"
+						cols="30"
+						rows="10"
+						value={values.message}
+						onChange={handleChange}
+						onBlur={handleBlur}
+					/>
+				</div>
+				{touched.message && errors.message && (
+					<ErrorMsg msg={errors.message} />
+				)}
+			</div>
+
+			{/* submit btn */}
+			<button className="primaryBtn w-full">
+				<span>Submit</span>
+			</button>
+		</form>
+	);
+};
+
+const ErrorMsg = ({ msg }) => {
+	return <span className="text-xs text-red-500">{msg}</span>;
 };
 
 export default HomePage;
