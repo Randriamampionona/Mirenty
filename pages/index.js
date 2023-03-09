@@ -10,6 +10,15 @@ import S1 from "../public/assets/Sary/mirenty.com_mirenty (38).jpg";
 import S2 from "../public/assets/Sary/mirenty.com_mirenty (37).jpg";
 import NewsEvents from "../public/assets/Sary/mirenty.com_mirenty (32).jpg";
 import NewsEventsImg from "../public/assets/Sary/mirenty.com_mirenty (38).jpg";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import g1 from "../public/assets/Sary/mirenty.com_mirenty (1).jpg";
+import g2 from "../public/assets/Sary/mirenty.com_mirenty (4).jpg";
+import g3 from "../public/assets/Sary/mirenty.com_mirenty (5).jpg";
+import g4 from "../public/assets/Sary/mirenty.com_mirenty (8).jpg";
+import g5 from "../public/assets/Sary/mirenty.com_mirenty (16).jpg";
+import g6 from "../public/assets/Sary/mirenty.com_mirenty (22).jpg";
+import g7 from "../public/assets/Sary/mirenty.com_mirenty (23).jpg";
+import g8 from "../public/assets/Sary/mirenty.com_mirenty (24).jpg";
 
 const HomePage = () => {
 	return (
@@ -18,6 +27,7 @@ const HomePage = () => {
 			<IntroSection />
 			<CoupleSection />
 			<NewsEventsSection />
+			<GallerySection />
 		</Fragment>
 	);
 };
@@ -167,6 +177,36 @@ const NewsEventsSection = () => {
 						/>
 					</div>
 				</div>
+			</div>
+		</section>
+	);
+};
+
+const GallerySection = () => {
+	const images = [g1, g2, g3, g4, g5, g6, g7, g8];
+
+	return (
+		<section className="w-full py-20">
+			<SectionTitle title={"Our Gallery"} />
+
+			<div className="max-w-[90%] w-full mx-auto md:max-w-2xl lg:max-w-3xl">
+				<ResponsiveMasonry
+					columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+					<Masonry gutter="12px">
+						{images.map((image, i) => (
+							<Image
+								key={i}
+								src={image}
+								alt={image}
+								className="block w-full transition-all duration-75 ease-in hover:brightness-90 hover:scale-105 hover:shadow-md hover:shadow-gray-900/20"
+							/>
+						))}
+					</Masonry>
+				</ResponsiveMasonry>
+
+				<button className="primaryBtn mx-auto mt-10">
+					<span>Show more</span>
+				</button>
 			</div>
 		</section>
 	);
