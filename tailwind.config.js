@@ -13,6 +13,7 @@ module.exports = {
 			colors: {
 				primaryColor: "#bb2649",
 				// secondaryColor: "#fe9ab2",
+				sectionBgColor: "#f5f5dc",
 			},
 
 			boxShadow: {

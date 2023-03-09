@@ -21,13 +21,18 @@ import g7 from "../public/assets/Sary/mirenty.com_mirenty (23).jpg";
 import g8 from "../public/assets/Sary/mirenty.com_mirenty (24).jpg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import aboutImg1 from "../public/assets/Sary/mirenty.com_mirenty (1).jpg";
+import aboutImg2 from "../public/assets/Sary/mirenty.com_mirenty (5).jpg";
+import aboutImg3 from "../public/assets/Sary/mirenty.com_mirenty (12).jpg";
+import aboutImg4 from "../public/assets/Sary/mirenty.com_mirenty (35).jpg";
 
 const HomePage = () => {
 	return (
 		<Fragment>
 			<MetaHead />
 			<IntroSection />
-			<CoupleSection />
+			<AboutSection />
+			{/* <CoupleSection /> */}
 			<NewsEventsSection />
 			<GallerySection />
 			<ContactForm />
@@ -70,6 +75,75 @@ const IntroSection = () => {
 			<p className="absolute bottom-6 left-1/2 translate-x-1/2 cursor-pointer animate-bounce text-white text-lg">
 				<FaMouse />
 			</p>
+		</section>
+	);
+};
+
+const AboutSection = () => {
+	const slideData = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
+	return (
+		<section className="w-full py-20 bg-sectionBgColor">
+			<div className="flex items-center justify-center gap-x-10 max-w-[90%] w-full mx-auto md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+				<div className="relative w-[30%]">
+					{/* swiper */}
+					<Swiper
+						slidesPerView={1}
+						modules={[Autoplay]}
+						spaceBetween={0}
+						// pagination={{ clickable: true }}
+						loop={true}
+						draggable={true}
+						autoplay={{
+							delay: 4000,
+							disableOnInteraction: false,
+						}}>
+						{slideData?.map((s) => (
+							<SwiperSlide key={s} className="w-auto h-auto">
+								<figure className="relative w-72 h-96 p-2 bg-white border border-gray-900/40">
+									<Image
+										src={s}
+										alt={s}
+										objectFit="cover"
+										layout="fill"
+									/>
+								</figure>
+							</SwiperSlide>
+						))}
+					</Swiper>
+				</div>
+
+				<div className="flex-grow">
+					<div className="w-full mb-4">
+						<div>
+							<h1 className="text-xl md:text-2xl font-medium uppercase">
+								About Us
+							</h1>
+							<div className="mt-[7px] w-14 h-[3px] bg-primaryColor" />
+						</div>
+					</div>
+
+					<p className="mb-4">
+						Lorem ipsum dolor, sit amet consectetur adipisicing
+						elit. Voluptatem voluptatibus similique doloribus
+						corrupti optio facilis pariatur vel asperiores
+						inventore, expedita alias suscipit,
+					</p>
+
+					<p className="mb-4">
+						Lorem ipsum dolor sit amet consectetur, adipisicing
+						elit. Quisquam velit consequatur omnis, unde eaque
+						perspiciatis sequi veritatis ratione rerum quibusdam
+						sapiente iusto asperiores cumque! Facilis distinctio
+						quam dolorum deserunt illum, laboriosam eum veritatis
+						placeat quas enim eos libero reprehenderit eveniet
+						fugiat
+					</p>
+
+					<button className="primaryBtn mr-auto">
+						<span>Read more</span>
+					</button>
+				</div>
+			</div>
 		</section>
 	);
 };
