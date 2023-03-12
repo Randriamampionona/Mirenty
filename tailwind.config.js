@@ -16,6 +16,7 @@ module.exports = {
 			},
 
 			boxShadow: {
+				btnShadow: "0px 6px 13px #11172869",
 				aboutUsShadow: "0px 0px 10px 0px #111827",
 				newsEventsShadow: "0px 8px 23px -8px",
 			},

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { RiMailFill, RiMapFill, RiPhoneFill } from "react-icons/ri";
+import { RiMailFill, RiMap2Fill, RiPhoneFill } from "react-icons/ri";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -29,7 +29,7 @@ const Footer = ({ navLinks }) => {
 
 					<ul className="space-y-4">
 						<li className="flex items-center space-x-6">
-							<RiMapFill />
+							<RiMap2Fill />
 							<p>Lot GV 39 Bis</p>
 						</li>
 						<li className="flex items-center space-x-6">

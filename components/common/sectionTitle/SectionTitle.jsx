@@ -1,4 +1,5 @@
-import React from "react";
+import { motion } from "framer-motion";
+import { fadeInView, grow } from "../../../utils/variants";
 
 const SectionTitle = ({ title, desc }) => {
 	return (
@@ -7,13 +8,22 @@ const SectionTitle = ({ title, desc }) => {
 				<h1 className="text-xl md:text-2xl text-center font-greateVibes font-medium uppercase">
 					{title}
 				</h1>
-				<div className="mt-[7px] mx-auto w-14 h-[3px] bg-primaryColor" />
+				<motion.div
+					variants={grow()}
+					initial="initial"
+					whileInView="animate"
+					className="mt-[7px] mx-auto w-14 h-[3px] bg-primaryColor"
+				/>
 			</div>
 
 			{desc && (
-				<p className="text-center max-w-md mx-auto my-6 text-gray-700">
+				<motion.p
+					variants={fadeInView("up", 0.5)}
+					initial="initial"
+					whileInView="animate"
+					className="text-center max-w-md mx-auto my-6 text-gray-700">
 					{desc}
-				</p>
+				</motion.p>
 			)}
 		</div>
 	);

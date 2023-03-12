@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Fragment } from "react";
 import { MetaHead, NewsLetterForm, SectionTitle } from "./../components";
 import IntroImg from "../public/assets/Sary/mirenty.com_mirenty (2).jpg";
-import { FaFacebook, FaInstagram, FaMouse, FaTwitter } from "react-icons/fa";
+import { FaMouse } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, EffectCoverflow, Autoplay } from "swiper";
 import "swiper/css";
@@ -23,10 +23,10 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import aboutImg1 from "../public/assets/Sary/mirenty.com_mirenty (1).jpg";
 import aboutImg2 from "../public/assets/Sary/mirenty.com_mirenty (5).jpg";
-import aboutImg3 from "../public/assets/Sary/mirenty.com_mirenty (12).jpg";
+import aboutImg3 from "../public/assets/Sary/mirenty.com_mirenty (27).jpg";
 import TypeWriter from "typewriter-effect";
 import { motion } from "framer-motion";
-import { fadeIn } from "../utils/variants";
+import { fadeInView, grow } from "../utils/variants";
 
 const HomePage = () => {
 	return (
@@ -54,7 +54,7 @@ const IntroSection = () => {
 			/>
 			<div className="flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
 				<motion.h1
-					variants={fadeIn("up", 0.5)}
+					variants={fadeInView("up", 0.8)}
 					initial="initial"
 					whileInView="animate"
 					viewport={{ once: false, amount: 0.7 }}
@@ -73,7 +73,7 @@ const IntroSection = () => {
 				</motion.h1>
 
 				<motion.p
-					variants={fadeIn("up", 0.4)}
+					variants={fadeInView("up", 0.6)}
 					initial="initial"
 					whileInView="animate"
 					viewport={{ once: false, amount: 0.7 }}
@@ -83,34 +83,17 @@ const IntroSection = () => {
 				</motion.p>
 
 				<motion.div
-					variants={fadeIn("up", 0.3)}
+					variants={fadeInView("up", 0.4)}
 					initial="initial"
 					whileInView="animate"
 					viewport={{ once: false, amount: 0.7 }}
 					className="w-[25%]">
 					<NewsLetterForm btnText={"Get News"} />
 				</motion.div>
-
-				{/* <motion.div
-					variants={fadeIn("up", 0.3)}
-					initial="initial"
-					whileInView="animate"
-					viewport={{ once: false, amount: 0.7 }}
-					className="flex items-center justify-center gap-x-3">
-					<span className="p-2 rounded text-center text-white border border-white hover:bg-white hover:text-primaryColor cursor-pointer">
-						<FaFacebook />
-					</span>
-					<span className="p-2 rounded text-center text-white border border-white hover:bg-white hover:text-primaryColor cursor-pointer">
-						<FaInstagram />
-					</span>
-					<span className="p-2 rounded text-center text-white border border-white hover:bg-white hover:text-primaryColor cursor-pointer">
-						<FaTwitter />
-					</span>
-				</motion.div> */}
 			</div>
 
 			<motion.p
-				variants={fadeIn("down", 0.6)}
+				variants={fadeInView("down", 0.6)}
 				initial="initial"
 				whileInView="animate"
 				viewport={{ once: false, amount: 0.7 }}
@@ -127,7 +110,11 @@ const AboutSection = () => {
 	return (
 		<section className="w-full py-20 bg-sectionBgColor">
 			<div className="flex flex-col items-center justify-center gap-x-10 max-w-[90%] w-full mx-auto md:flex-row md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
-				<div className="flex-1">
+				<motion.div
+					variants={fadeInView("right")}
+					initial="initial"
+					whileInView="animate"
+					className="flex-1">
 					{/* swiper */}
 					<Swiper
 						effect="coverflow"
@@ -169,15 +156,24 @@ const AboutSection = () => {
 						{/* pagination */}
 						<div className="!flex !items-center !justify-center swiper_pagination mt-6" />
 					</Swiper>
-				</div>
+				</motion.div>
 
-				<div className="flex-1">
+				<motion.div
+					variants={fadeInView("left")}
+					initial="initial"
+					whileInView="animate"
+					className="flex-1">
 					<div className="w-full mb-4">
 						<div>
 							<h1 className="text-xl md:text-2xl font-greateVibes font-medium uppercase">
 								About Us
 							</h1>
-							<div className="mt-[7px] w-14 h-[3px] bg-primaryColor" />
+							<motion.div
+								variants={grow()}
+								initial="initial"
+								whileInView="animate"
+								className="mt-[7px] w-14 h-[3px] bg-primaryColor"
+							/>
 						</div>
 					</div>
 
@@ -201,7 +197,7 @@ const AboutSection = () => {
 					<button className="primaryBtn mr-auto">
 						<span>Read more</span>
 					</button>
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);
@@ -217,14 +213,18 @@ const NewsEventsSection = () => {
 				}
 			/>
 
-			<div className="relative w-full py-8 h-auto md:h-[35rem] md:py-0">
+			<div className="relative w-full py-8 h-auto md:h-[35rem] md:py-0 overflow-x-hidden">
 				<Image
 					src={NewsEvents}
 					alt="news & events"
 					layout="fill"
 					objectFit="cover"
 				/>
-				<div className="z-10 relative -bottom-28 shadow-newsEventsShadow bg-white !m-4 p-4 flex items-center justify-center flex-col-reverse gap-y-12 md:absolute md:!m-0 md:right-0 md:bottom-8 md:flex-row md:shadow-none md:w-[64%] lg:w-[42%]">
+				<motion.div
+					variants={fadeInView("left")}
+					initial="initial"
+					whileInView="animate"
+					className="z-10 relative -bottom-28 shadow-newsEventsShadow bg-white !m-4 p-4 flex items-center justify-center flex-col-reverse gap-y-12 md:absolute md:!m-0 md:right-0 md:bottom-8 md:flex-row md:shadow-none md:w-[64%] lg:w-[42%]">
 					<div className="w-full text-center md:text-left md:w-[70%]">
 						<h1 className="text-xl md:text-2xl mb-6">
 							Lorem ipsum dolor sit.
@@ -252,7 +252,7 @@ const NewsEventsSection = () => {
 							height={"150px"}
 						/>
 					</div>
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);
@@ -266,23 +266,32 @@ const GallerySection = () => {
 			<SectionTitle title={"Our Gallery"} />
 
 			<div className="max-w-[90%] w-full mx-auto md:max-w-2xl lg:max-w-3xl">
-				<ResponsiveMasonry
-					columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-					<Masonry gutter="12px">
-						{images.map((image, i) => (
-							<Image
-								key={i}
-								src={image}
-								alt={image}
-								className="block w-full transition-all duration-75 ease-in hover:brightness-90 hover:scale-105 hover:shadow-md hover:shadow-gray-900/20"
-							/>
-						))}
-					</Masonry>
-				</ResponsiveMasonry>
+				<motion.div
+					variants={fadeInView("up")}
+					initial="initial"
+					whileInView="animate">
+					<ResponsiveMasonry
+						columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+						<Masonry gutter="12px">
+							{images.map((image, i) => (
+								<Image
+									key={i}
+									src={image}
+									alt={image}
+									className="block w-full transition-all duration-75 ease-in hover:brightness-90 hover:scale-105 hover:shadow-md hover:shadow-gray-900/20"
+								/>
+							))}
+						</Masonry>
+					</ResponsiveMasonry>
+				</motion.div>
 
-				<button className="primaryBtn mx-auto mt-10">
+				<motion.button
+					variants={fadeInView("up")}
+					initial="initial"
+					whileInView="animate"
+					className="primaryBtn mx-auto mt-10">
 					<span>Show more</span>
-				</button>
+				</motion.button>
 			</div>
 		</section>
 	);
@@ -293,9 +302,13 @@ const ContactForm = () => {
 		<div className="w-full py-20 bg-sectionBgColor">
 			<SectionTitle title={"Contact Us"} />
 
-			<div className="mx-auto w-96">
+			<motion.div
+				variants={fadeInView("up")}
+				initial="initial"
+				whileInView="animate"
+				className="mx-auto w-96">
 				<FormInputs />
-			</div>
+			</motion.div>
 		</div>
 	);
 };
@@ -373,7 +386,7 @@ const FormInputs = () => {
 			</div>
 
 			{/* message */}
-			<div className="flex flex-col mb-1">
+			<div className="flex flex-col mb-3">
 				<div
 					className={`flex items-center justify-between px-3 h-auto rounded-sm bg-whiteColor border border-gray-300 focus-within:border focus-within:border-primaryColor ${
 						touched.message &&
