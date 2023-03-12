@@ -1,13 +1,17 @@
 import Image from "next/image";
 import { Fragment } from "react";
 import { MetaHead, NewsLetterForm, SectionTitle } from "./../components";
-import IntroImg from "../public/assets/Sary/mirenty.com_mirenty (2).jpg";
+import IntroImg1 from "../public/assets/Sary/mirenty.com_mirenty (2).jpg";
+import IntroImg2 from "../public/assets/Sary/mirenty.com_mirenty (3).jpg";
+import IntroImg3 from "../public/assets/Sary/mirenty.com_mirenty (39).jpg";
+import IntroImg4 from "../public/assets/Sary/mirenty.com_mirenty (37).jpg";
 import { FaMouse } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, EffectCoverflow, Autoplay } from "swiper";
+import { Pagination, EffectCoverflow, Autoplay, EffectFade } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
+import "swiper/css/effect-fade";
 import NewsEvents from "../public/assets/Sary/mirenty.com_mirenty (32).jpg";
 import NewsEventsImg from "../public/assets/Sary/mirenty.com_mirenty (38).jpg";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
@@ -42,17 +46,47 @@ const HomePage = () => {
 };
 
 const IntroSection = () => {
+	const slideData = [IntroImg1, IntroImg2, IntroImg3];
 	return (
 		<section className="relative flex items-center justify-center w-full h-screen">
-			<Image
-				src={IntroImg}
+			{/* <Image
+				src={IntroImg1}
 				alt="intro"
 				layout="fill"
 				objectFit="cover"
 				priority={true}
 				className="brightness-50 pointer-events-none"
-			/>
-			<div className="flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
+			/> */}
+
+			<div className="w-full h-screen">
+				<Swiper
+					effect="fade"
+					centeredSlides={true}
+					loop={true}
+					slidesPerView={1}
+					modules={[Pagination, EffectFade, Autoplay]}
+					autoplay={{
+						delay: 6000,
+					}}
+					className="!relative !w-full !h-full">
+					{slideData.map((s) => (
+						<SwiperSlide
+							key={s}
+							className="!relative !w-full !h-full">
+							<Image
+								src={s}
+								alt="intro"
+								layout="fill"
+								objectFit="cover"
+								priority={true}
+								className="brightness-50 pointer-events-none"
+							/>
+						</SwiperSlide>
+					))}
+				</Swiper>
+			</div>
+
+			<div className="z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
 				<motion.h1
 					variants={fadeInView("up", 0.8)}
 					initial="initial"
@@ -97,7 +131,7 @@ const IntroSection = () => {
 				initial="initial"
 				whileInView="animate"
 				viewport={{ once: false, amount: 0.7 }}
-				className="absolute bottom-6 left-1/2 translate-x-1/2 cursor-pointer animate-bounce text-white text-lg">
+				className="z-10 absolute bottom-6 left-1/2 translate-x-1/2 cursor-pointer animate-bounce text-white text-lg">
 				<FaMouse />
 			</motion.p>
 		</section>
