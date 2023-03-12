@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Fragment } from "react";
-import { MetaHead, SectionTitle } from "./../components";
+import { MetaHead, NewsLetterForm, SectionTitle } from "./../components";
 import IntroImg from "../public/assets/Sary/mirenty.com_mirenty (2).jpg";
 import { FaFacebook, FaInstagram, FaMouse, FaTwitter } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -54,7 +54,7 @@ const IntroSection = () => {
 			/>
 			<div className="flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
 				<motion.h1
-					variants={fadeIn("up", 0.3)}
+					variants={fadeIn("up", 0.5)}
 					initial="initial"
 					whileInView="animate"
 					viewport={{ once: false, amount: 0.7 }}
@@ -77,13 +77,22 @@ const IntroSection = () => {
 					initial="initial"
 					whileInView="animate"
 					viewport={{ once: false, amount: 0.7 }}
-					className="text-center max-w-[85%] w-full text-gray-200 mb-8 md:max-w-2xl lg:max-w-xl">
+					className="text-center max-w-[85%] w-full text-gray-200 mb-8 md:max-w-2xl lg:max-w-[35rem]">
 					votre wedding planner dédiée à la création de cérémonies de
 					mariage originales et sur mesure.
 				</motion.p>
 
 				<motion.div
-					variants={fadeIn("up", 0.5)}
+					variants={fadeIn("up", 0.3)}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: false, amount: 0.7 }}
+					className="w-[25%]">
+					<NewsLetterForm btnText={"Get News"} />
+				</motion.div>
+
+				{/* <motion.div
+					variants={fadeIn("up", 0.3)}
 					initial="initial"
 					whileInView="animate"
 					viewport={{ once: false, amount: 0.7 }}
@@ -97,7 +106,7 @@ const IntroSection = () => {
 					<span className="p-2 rounded text-center text-white border border-white hover:bg-white hover:text-primaryColor cursor-pointer">
 						<FaTwitter />
 					</span>
-				</motion.div>
+				</motion.div> */}
 			</div>
 
 			<motion.p
