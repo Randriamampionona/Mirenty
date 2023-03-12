@@ -25,6 +25,8 @@ import aboutImg1 from "../public/assets/Sary/mirenty.com_mirenty (1).jpg";
 import aboutImg2 from "../public/assets/Sary/mirenty.com_mirenty (5).jpg";
 import aboutImg3 from "../public/assets/Sary/mirenty.com_mirenty (12).jpg";
 import TypeWriter from "typewriter-effect";
+import { motion } from "framer-motion";
+import { fadeIn } from "../utils/variants";
 
 const HomePage = () => {
 	return (
@@ -51,7 +53,12 @@ const IntroSection = () => {
 				className="brightness-50 pointer-events-none"
 			/>
 			<div className="flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
-				<h1 className="flex text-4xl text-center text-white font-bold mb-4 md:text-5xl">
+				<motion.h1
+					variants={fadeIn("up", 0.3)}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: false, amount: 0.7 }}
+					className="flex text-4xl text-center text-white font-bold mb-4 md:text-5xl">
 					{/* Bienvenue chez MIRENTY */}
 					<span>Bienvenue chez&nbsp;</span>
 					<span>
@@ -63,13 +70,24 @@ const IntroSection = () => {
 							}}
 						/>
 					</span>
-				</h1>
-				<p className="text-center max-w-[85%] w-full text-gray-200 mb-8 md:max-w-2xl lg:max-w-xl">
+				</motion.h1>
+
+				<motion.p
+					variants={fadeIn("up", 0.4)}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: false, amount: 0.7 }}
+					className="text-center max-w-[85%] w-full text-gray-200 mb-8 md:max-w-2xl lg:max-w-xl">
 					votre wedding planner dédiée à la création de cérémonies de
 					mariage originales et sur mesure.
-				</p>
+				</motion.p>
 
-				<div className="flex items-center justify-center gap-x-3">
+				<motion.div
+					variants={fadeIn("up", 0.5)}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: false, amount: 0.7 }}
+					className="flex items-center justify-center gap-x-3">
 					<span className="p-2 rounded text-center text-white border border-white hover:bg-white hover:text-primaryColor cursor-pointer">
 						<FaFacebook />
 					</span>
@@ -79,12 +97,17 @@ const IntroSection = () => {
 					<span className="p-2 rounded text-center text-white border border-white hover:bg-white hover:text-primaryColor cursor-pointer">
 						<FaTwitter />
 					</span>
-				</div>
+				</motion.div>
 			</div>
 
-			<p className="absolute bottom-6 left-1/2 translate-x-1/2 cursor-pointer animate-bounce text-white text-lg">
+			<motion.p
+				variants={fadeIn("down", 0.6)}
+				initial="initial"
+				whileInView="animate"
+				viewport={{ once: false, amount: 0.7 }}
+				className="absolute bottom-6 left-1/2 translate-x-1/2 cursor-pointer animate-bounce text-white text-lg">
 				<FaMouse />
-			</p>
+			</motion.p>
 		</section>
 	);
 };
