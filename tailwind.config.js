@@ -7,7 +7,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				greateVibes: ["Greate Vibes", "cursive"],
+				dancingScript: ["Dancing Script", cursive],
 			},
 
 			colors: {

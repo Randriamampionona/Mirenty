@@ -5,7 +5,7 @@ const SectionTitle = ({ title, desc }) => {
 	return (
 		<div className="w-full my-10">
 			<div className="mx-auto">
-				<h1 className="text-xl md:text-2xl text-center font-greateVibes font-medium uppercase">
+				<h1 className="text-xl md:text-2xl text-center font-dancingScript font-medium uppercase">
 					{title}
 				</h1>
 				<motion.div

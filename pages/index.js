@@ -199,7 +199,7 @@ const AboutSection = () => {
 					className="flex-1">
 					<div className="w-full mb-4">
 						<div>
-							<h1 className="text-xl md:text-2xl font-greateVibes font-medium uppercase">
+							<h1 className="text-xl md:text-2xl font-dancingScript font-medium uppercase">
 								About Us
 							</h1>
 							<motion.div
